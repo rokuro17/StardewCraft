@@ -22,7 +22,7 @@ loom {
     splitEnvironmentSourceSets()
 
 	mods {
-		"modid" {
+		"stardewcraft" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
