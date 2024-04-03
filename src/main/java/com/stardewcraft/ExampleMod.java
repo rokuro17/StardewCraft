@@ -4,10 +4,7 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.item.FoodComponent;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -35,7 +32,7 @@ public class ExampleMod implements ModInitializer {
 		}
 	}
 
-	public static final RegistryKey<ItemGroup> ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("stardewcraft", "StardewCraft"));
+	public static final RegistryKey<ItemGroup> STARDEWCRAFT = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("stardewcraft", "stardewcraft"));
 
 
 	@Override
@@ -43,6 +40,13 @@ public class ExampleMod implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+		Registry.register(Registries.ITEM_GROUP, STARDEWCRAFT, FabricItemGroup.builder()
+				.icon(() -> new ItemStack(STARDROP))
+				.displayName(Text.translatable("StardewCraft"))
+						.entries(((displayContext, entries) -> {
+							entries.add(STARDROP);
+						}))
+				.build()); // build() no longer registers by itself
 
 		LOGGER.info("Hello Fabric world!");
 	}
