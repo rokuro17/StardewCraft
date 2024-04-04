@@ -29,7 +29,7 @@ public class Main implements ModInitializer {
 
 	public static final Item STARDROP =
 			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "stardrop"),
-					new Item(new FabricItemSettings().maxCount(13).food(new FoodComponent.Builder().alwaysEdible().hunger(10).saturationModifier(0.5f).statusEffect(MaxHeartUpInstance, 1.0f).build())));
+					new Item(new FabricItemSettings().maxCount(1).food(new FoodComponent.Builder().alwaysEdible().hunger(10).saturationModifier(0.5f).statusEffect(MaxHeartUpInstance, 1.0f).build())));
 
 	public static final RegistryKey<ItemGroup> STARDEWCRAFT =
 			RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("stardewcraft", "stardewcraft"));
@@ -49,6 +49,6 @@ public class Main implements ModInitializer {
 
 		LOGGER.info("Hello Fabric world!");
 
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("stardewcraft", "heartboosteffect"), MAXHEARTUP_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("stardewcraft", "max_heart_up"), MAXHEARTUP_EFFECT);
 	}
 }
