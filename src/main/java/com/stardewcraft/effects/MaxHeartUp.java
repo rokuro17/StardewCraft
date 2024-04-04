@@ -1,4 +1,4 @@
-package com.stardewcraft;
+package com.stardewcraft.effects;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
