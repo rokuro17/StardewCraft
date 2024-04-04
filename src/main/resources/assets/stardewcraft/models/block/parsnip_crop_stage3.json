@@ -1,7 +1,6 @@
 {
   "parent": "minecraft:block/cross",
-  "render_type": "minecraft:cutout",
   "textures": {
-    "crop": "stardewcraft:block/parsnip_stage3"
+    "cross": "stardewcraft:block/parsnip_crop_stage3"
   }
 }
