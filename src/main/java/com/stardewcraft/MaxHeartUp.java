@@ -9,7 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 
 public class MaxHeartUp extends StatusEffect {
     public MaxHeartUp() {
-        super(StatusEffectCategory.BENEFICIAL, 0x98D982); // Color in RGB
+        super(StatusEffectCategory.BENEFICIAL, 0xB982D9); // Color in RGB
     }
 
     @Override
