@@ -19,7 +19,7 @@
 			"com.stardewcraft.Main"
 		],
 		"client": [
-			"com.stardewcraft.ExampleModClient"
+			"com.stardewcraft.MainClient"
 		]
 	},
 	"mixins": [
