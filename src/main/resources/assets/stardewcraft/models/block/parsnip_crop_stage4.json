@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraft:block/parsnip_crop_stage4"
+  }
+}
