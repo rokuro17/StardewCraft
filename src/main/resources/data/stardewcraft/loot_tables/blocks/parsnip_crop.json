@@ -19,7 +19,7 @@
           "condition": "minecraft:block_state_property",
           "block": "stardewcraft:parsnip_crop",
           "properties": {
-            "age": "7"
+            "age": "4"
           }
         }
       ],
