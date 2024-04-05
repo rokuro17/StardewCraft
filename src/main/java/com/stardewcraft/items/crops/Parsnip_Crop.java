@@ -1,6 +1,6 @@
 package com.stardewcraft.items.crops;
 
-import com.stardewcraft.Main;
+import com.stardewcraft.StardewCraft;
 
 import net.minecraft.block.*;
 import net.minecraft.item.ItemConvertible;
@@ -24,7 +24,7 @@ public class Parsnip_Crop extends CropBlock {
 
     @Override
     public ItemConvertible getSeedsItem() {
-        return Main.PARSNIP_SEEDS;
+        return StardewCraft.PARSNIP_SEEDS;
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

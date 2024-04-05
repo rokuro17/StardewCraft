@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.stardewcraft.Main"
+			"com.stardewcraft.StardewCraft"
 		],
 		"client": [
 			"com.stardewcraft.MainClient"

@@ -22,7 +22,7 @@ public class CopperMaterial implements ToolMaterial {
     }
     @Override
     public int getMiningLevel() {
-        return 2;
+        return 4;
     }
     @Override
     public int getEnchantability() {

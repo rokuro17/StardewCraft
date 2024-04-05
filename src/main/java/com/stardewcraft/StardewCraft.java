@@ -1,15 +1,18 @@
 package com.stardewcraft;
 
+import com.stardewcraft.blockentities.SafeBoxBlockEntity;
 import com.stardewcraft.effects.MaxHeartUp;
-import com.stardewcraft.items.tools.CopperTools;
-import com.stardewcraft.items.tools.CopperMaterial;
 
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.CropBlock;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.*;
@@ -23,7 +26,7 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Main implements ModInitializer {
+public class StardewCraft implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
@@ -50,6 +53,12 @@ public class Main implements ModInitializer {
 									.hunger(2)
 									.saturationModifier(0.1f)
 									.build())));
+
+	public static final Block SAFE_BOX_BLOCK  = new Block(FabricBlockSettings.create().strength(4.0f));
+	public static final BlockEntityType<SafeBoxBlockEntity> SAFE_BOX_BLOCK_ENTITY =
+			Registry.register(Registries.BLOCK_ENTITY_TYPE,
+					new Identifier("stardewcraft", "safe_box_block_entity"),
+					FabricBlockEntityTypeBuilder.create(SafeBoxBlockEntity::new, StardewCraft.SAFE_BOX_BLOCK).build());
 
 	public static final RegistryKey<ItemGroup> STARDEWCRAFT =
 			RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("stardewcraft", "stardewcraft"));
@@ -87,7 +96,7 @@ public class Main implements ModInitializer {
 						}))
 				.build()); // build() no longer registers by itself
 
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("StardewCraft");
 
 		//Register zone of effects
 		Registry.register(Registries.STATUS_EFFECT, new Identifier("stardewcraft", "max_heart_up"), MAXHEARTUP_EFFECT);
@@ -95,5 +104,8 @@ public class Main implements ModInitializer {
 		//Register zone of crops
 		Registry.register(Registries.BLOCK, new Identifier("stardewcraft","parsnip_crop"), PARSNIP_CROP);
 		Registry.register(Registries.ITEM, new Identifier("stardewcraft","parsnip_seeds"), PARSNIP_SEEDS);
+
+
+		Registry.register(Registries.BLOCK, new Identifier("stardewcraft", "safe_box_block"), SAFE_BOX_BLOCK);
 	}
 }
