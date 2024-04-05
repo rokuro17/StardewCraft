@@ -1,6 +1,8 @@
 package com.stardewcraft;
 
 import com.stardewcraft.effects.MaxHeartUp;
+import com.stardewcraft.items.tools.CopperTools;
+import com.stardewcraft.items.tools.CopperMaterial;
 
 
 import net.fabricmc.api.ModInitializer;
@@ -54,6 +56,19 @@ public class Main implements ModInitializer {
 
 	public static final CropBlock PARSNIP_CROP = new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 	public static final Item PARSNIP_SEEDS = new AliasedBlockItem(PARSNIP_CROP, new Item.Settings());
+
+
+
+	//Register zone of tools
+	public static final Item COPPER_PICKAXE =
+			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_pickaxe"),
+					new Item(new FabricItemSettings()));
+	public static final Item COPPER_AXE =
+			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_axe"),
+					new Item(new FabricItemSettings()));
+	public static final Item COPPER_HOE =
+			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_hoe"),
+					new Item(new FabricItemSettings()));
 
 	@Override
 	public void onInitialize() {
