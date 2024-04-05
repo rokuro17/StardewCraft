@@ -25,6 +25,7 @@ public class Parsnip_Crop extends CropBlock {
         super(settings);
     }
 
+    @Override
     public ItemConvertible getSeedsItem() {
         return Main.PARSNIP_SEEDS;
     }
