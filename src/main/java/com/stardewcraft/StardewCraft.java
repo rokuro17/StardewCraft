@@ -25,7 +25,13 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ *
+ *  This class implements the main features of the mod
+ *
+ * @author  Gabriel Pizarro, Daniel Monferrer
+ * @version 0.0.1
+ **/
 public class StardewCraft implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
@@ -78,7 +84,9 @@ public class StardewCraft implements ModInitializer {
 	public static final Item COPPER_HOE =
 			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_hoe"),
 					new Item(new FabricItemSettings()));
-
+	/**
+	 * Method that regulates the behavior of the mod on initialization
+	 */
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
