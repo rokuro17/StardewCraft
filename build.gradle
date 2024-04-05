@@ -87,7 +87,7 @@ publishing {
 	}
 
 	modrinth {
-		token = 'mrp_xoR5Ps2wwYRxYMpjXS60UzO8mtGsnAOxN09HiLt7j8cmMceBgIW4hOyKtJty' // Please use an environment variable for this! The default is `$MODRINTH_TOKEN`.
+		token = '' // Please use an environment variable for this! The default is `$MODRINTH_TOKEN`.
 		projectId = 'co9x3Kdi' // The ID of your Modrinth project. Slugs will not work.
 		versionNumber = '0.0.1' // The (preferably SemVer) version of the mod. If not specified, it'll use the `version` declaration
 		versionType = 'alpha' // The version title. If not specified, it'll use the version number
