@@ -38,3 +38,10 @@ hs_err_*.log
 replay_*.log
 *.hprof
 *.jfr
+
+
+# Gradle
+/build/
+gradle-app.setting
+gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
