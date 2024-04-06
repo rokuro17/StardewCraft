@@ -35,7 +35,7 @@ public class CopperMaterial implements ToolMaterial {
      */
     @Override
     public float getAttackDamage() {
-        return 0.0f;
+        return 1.0f;
     }
     /**
      * Method to get the mining level of the tool. Currently level 2 (IRON)

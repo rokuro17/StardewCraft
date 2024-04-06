@@ -4,6 +4,7 @@ import com.stardewcraft.blockentities.SafeBoxBlockEntity;
 import com.stardewcraft.effects.MaxHeartUp;
 
 
+import com.stardewcraft.items.tools.CopperTools;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -75,18 +76,14 @@ public class StardewCraft implements ModInitializer {
 
 
 	//Register zone of tools
-	public static final Item COPPER_PICKAXE =
-			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_pickaxe"),
-					new Item(new FabricItemSettings()));
-	public static final Item COPPER_AXE =
-			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_axe"),
-					new Item(new FabricItemSettings()));
-	public static final Item COPPER_HOE =
-			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_hoe"),
-					new Item(new FabricItemSettings()));
-	public static final Item COPPER_SHOVEL =
-			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_shovel"),
-					new Item(new FabricItemSettings()));
+	private void registerTools() {
+		Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_pickaxe"), CopperTools.COPPER_PICKAXE);
+		Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_axe"), CopperTools.COPPER_AXE);
+		Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_hoe"), CopperTools.COPPER_HOE);
+		Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_shovel"), CopperTools.COPPER_SHOVEL);
+	}
+
+
 	/**
 	 * Method that regulates the behavior of the mod on initialization
 	 */
@@ -95,6 +92,7 @@ public class StardewCraft implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+		registerTools();
 
 		//Register of custom Item Group for the mod
 		Registry.register(Registries.ITEM_GROUP, STARDEWCRAFT, FabricItemGroup.builder()
@@ -104,10 +102,10 @@ public class StardewCraft implements ModInitializer {
 							entries.add(STARDROP);
 							entries.add(PARSNIP);
 							entries.add(PARSNIP_SEEDS);
-							entries.add(COPPER_AXE);
-							entries.add(COPPER_HOE);
-							entries.add(COPPER_PICKAXE);
-							entries.add(COPPER_SHOVEL);
+							entries.add(CopperTools.COPPER_AXE);
+							entries.add(CopperTools.COPPER_HOE);
+							entries.add(CopperTools.COPPER_PICKAXE);
+							entries.add(CopperTools.COPPER_SHOVEL);
 						}))
 				.build()); // build() no longer registers by itself
 
