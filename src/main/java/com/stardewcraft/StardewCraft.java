@@ -84,6 +84,9 @@ public class StardewCraft implements ModInitializer {
 	public static final Item COPPER_HOE =
 			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_hoe"),
 					new Item(new FabricItemSettings()));
+	public static final Item COPPER_SHOVEL =
+			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_shovel"),
+					new Item(new FabricItemSettings()));
 	/**
 	 * Method that regulates the behavior of the mod on initialization
 	 */
@@ -101,6 +104,10 @@ public class StardewCraft implements ModInitializer {
 							entries.add(STARDROP);
 							entries.add(PARSNIP);
 							entries.add(PARSNIP_SEEDS);
+							entries.add(COPPER_AXE);
+							entries.add(COPPER_HOE);
+							entries.add(COPPER_PICKAXE);
+							entries.add(COPPER_SHOVEL);
 						}))
 				.build()); // build() no longer registers by itself
 
