@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "stardewcraft:blue_jazz"
+    }
+  ],
+  "result": {
+    "item": "stardewcraft:blue_jazz_seeds",
+    "count": 3
+  }
+}

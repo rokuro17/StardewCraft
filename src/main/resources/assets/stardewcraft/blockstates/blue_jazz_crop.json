@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "stardewcraft:block/blue_jazz_crop_stage0"
+    },
+    "age=1": {
+      "model": "stardewcraft:block/blue_jazz_crop_stage0"
+    },
+    "age=2": {
+      "model": "stardewcraft:block/blue_jazz_crop_stage1"
+    },
+    "age=3": {
+      "model": "stardewcraft:block/blue_jazz_crop_stage1"
+    },
+    "age=4": {
+      "model": "stardewcraft:block/blue_jazz_crop_stage2"
+    },
+    "age=5": {
+      "model": "stardewcraft:block/blue_jazz_crop_stage2"
+    },
+    "age=6": {
+      "model": "stardewcraft:block/blue_jazz_crop_stage3"
+    },
+    "age=7": {
+      "model": "stardewcraft:block/blue_jazz_crop_stage4"
+    }
+  }
+}

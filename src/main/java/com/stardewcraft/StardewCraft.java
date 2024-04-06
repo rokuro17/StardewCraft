@@ -1,6 +1,5 @@
 package com.stardewcraft;
 
-import com.stardewcraft.blockentities.SafeBoxBlockEntity;
 import com.stardewcraft.effects.MaxHeartUp;
 
 
@@ -8,12 +7,8 @@ import com.stardewcraft.items.tools.CopperTools;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.CropBlock;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.*;
@@ -34,16 +29,18 @@ import org.slf4j.LoggerFactory;
  * @version 0.0.1
  **/
 public class StardewCraft implements ModInitializer {
+	public static String MOD_ID = "stardewcraft";
+
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
-    public static final Logger LOGGER = LoggerFactory.getLogger("stardewcraft");
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final StatusEffect MAXHEARTUP_EFFECT = new MaxHeartUp();
 
 	static StatusEffectInstance MaxHeartUpInstance = new StatusEffectInstance(MAXHEARTUP_EFFECT, 20, 0);
 
 	public static final Item STARDROP =
-			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "stardrop"),
+			Registry.register(Registries.ITEM, new Identifier(MOD_ID, "stardrop"),
 					new Item(new FabricItemSettings()
 							.maxCount(1)
 							.food(new FoodComponent.Builder()
@@ -51,9 +48,16 @@ public class StardewCraft implements ModInitializer {
 									.saturationModifier(0.5f)
 									.statusEffect(MaxHeartUpInstance, 1.0f)
 									.build())));
-
 	public static final Item PARSNIP =
-			Registry.register(Registries.ITEM, new Identifier("stardewcraft", "parsnip"),
+			Registry.register(Registries.ITEM, new Identifier(MOD_ID, "parsnip"),
+					new Item(new FabricItemSettings()
+							.maxCount(64)
+							.food(new FoodComponent.Builder()
+									.hunger(2)
+									.saturationModifier(0.1f)
+									.build())));
+	public static final Item BLUE_JAZZ =
+			Registry.register(Registries.ITEM, new Identifier(MOD_ID, "blue_jazz"),
 					new Item(new FabricItemSettings()
 							.maxCount(64)
 							.food(new FoodComponent.Builder()
@@ -61,26 +65,24 @@ public class StardewCraft implements ModInitializer {
 									.saturationModifier(0.1f)
 									.build())));
 
-	public static final Block SAFE_BOX_BLOCK  = new Block(FabricBlockSettings.create().strength(4.0f));
-	public static final BlockEntityType<SafeBoxBlockEntity> SAFE_BOX_BLOCK_ENTITY =
-			Registry.register(Registries.BLOCK_ENTITY_TYPE,
-					new Identifier("stardewcraft", "safe_box_block_entity"),
-					FabricBlockEntityTypeBuilder.create(SafeBoxBlockEntity::new, StardewCraft.SAFE_BOX_BLOCK).build());
-
 	public static final RegistryKey<ItemGroup> STARDEWCRAFT =
-			RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("stardewcraft", "stardewcraft"));
-
-	public static final CropBlock PARSNIP_CROP = new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
-	public static final Item PARSNIP_SEEDS = new AliasedBlockItem(PARSNIP_CROP, new Item.Settings());
-
+			RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(MOD_ID, "stardewcraft"));
+	public static final CropBlock PARSNIP_CROP =
+			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+	public static final Item PARSNIP_SEEDS =
+			new AliasedBlockItem(PARSNIP_CROP, new Item.Settings());
+	public static final CropBlock BLUE_JAZZ_CROP =
+			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+	public static final Item BLUE_JAZZ_SEEDS =
+			new AliasedBlockItem(BLUE_JAZZ_CROP, new Item.Settings());
 
 
 	//Register zone of tools
 	private void registerTools() {
-		Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_pickaxe"), CopperTools.COPPER_PICKAXE);
-		Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_axe"), CopperTools.COPPER_AXE);
-		Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_hoe"), CopperTools.COPPER_HOE);
-		Registry.register(Registries.ITEM, new Identifier("stardewcraft", "copper_shovel"), CopperTools.COPPER_SHOVEL);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "copper_pickaxe"), CopperTools.COPPER_PICKAXE);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "copper_axe"), CopperTools.COPPER_AXE);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "copper_hoe"), CopperTools.COPPER_HOE);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "copper_shovel"), CopperTools.COPPER_SHOVEL);
 	}
 
 
@@ -102,6 +104,8 @@ public class StardewCraft implements ModInitializer {
 							entries.add(STARDROP);
 							entries.add(PARSNIP);
 							entries.add(PARSNIP_SEEDS);
+							entries.add(BLUE_JAZZ);
+							entries.add(BLUE_JAZZ_SEEDS);
 							entries.add(CopperTools.COPPER_AXE);
 							entries.add(CopperTools.COPPER_HOE);
 							entries.add(CopperTools.COPPER_PICKAXE);
@@ -112,13 +116,12 @@ public class StardewCraft implements ModInitializer {
 		LOGGER.info("StardewCraft");
 
 		//Register zone of effects
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("stardewcraft", "max_heart_up"), MAXHEARTUP_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier(MOD_ID, "max_heart_up"), MAXHEARTUP_EFFECT);
 
 		//Register zone of crops
-		Registry.register(Registries.BLOCK, new Identifier("stardewcraft","parsnip_crop"), PARSNIP_CROP);
-		Registry.register(Registries.ITEM, new Identifier("stardewcraft","parsnip_seeds"), PARSNIP_SEEDS);
-
-
-		Registry.register(Registries.BLOCK, new Identifier("stardewcraft", "safe_box_block"), SAFE_BOX_BLOCK);
+		Registry.register(Registries.BLOCK, new Identifier(MOD_ID,"parsnip_crop"), PARSNIP_CROP);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID,"parsnip_seeds"), PARSNIP_SEEDS);
+		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "blue_jazz_crop"), BLUE_JAZZ_CROP);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "blue_jazz_seeds"), BLUE_JAZZ_SEEDS);
 	}
 }
