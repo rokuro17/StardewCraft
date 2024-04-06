@@ -102,4 +102,7 @@ publishing {
 			optional.version "sodium", "mc1.20.4-0.5.8" // Creates a new optional dependency on this specific version of Sodium
 		}
 	}
+	fabricApi {
+		configureDataGeneration()
+	}
 }
