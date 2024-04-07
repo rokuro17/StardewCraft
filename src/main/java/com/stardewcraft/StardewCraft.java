@@ -1,5 +1,6 @@
 package com.stardewcraft;
 
+import com.stardewcraft.blocks.ScarecrowBlock;
 import com.stardewcraft.effects.MaxHeartUp;
 
 
@@ -7,7 +8,9 @@ import com.stardewcraft.items.tools.CopperTools;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.CropBlock;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -86,6 +89,7 @@ public class StardewCraft implements ModInitializer {
 	}
 
 
+	public static final Block SCARECROW  = new ScarecrowBlock(FabricBlockSettings.create().strength(4.0f).requiresTool());
 	/**
 	 * Method that regulates the behavior of the mod on initialization
 	 */
@@ -123,5 +127,10 @@ public class StardewCraft implements ModInitializer {
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID,"parsnip_seeds"), PARSNIP_SEEDS);
 		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "blue_jazz_crop"), BLUE_JAZZ_CROP);
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "blue_jazz_seeds"), BLUE_JAZZ_SEEDS);
+
+
+		//Register zone of blocks
+		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "scarecrow_block"), SCARECROW);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "scarecrow_block"), new BlockItem(SCARECROW, new FabricItemSettings()));
 	}
 }
