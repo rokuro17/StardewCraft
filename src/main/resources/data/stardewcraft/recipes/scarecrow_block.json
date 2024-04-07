@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " F ",
+    " C ",
+    " W "
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:short_grass"
+    },
+    "C": {
+      "tag": "minecraft:coals"
+    },
+    "W": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "item": "stardewcraft:scarecrow_block"
+  }
+}

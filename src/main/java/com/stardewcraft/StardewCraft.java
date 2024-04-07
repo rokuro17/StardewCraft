@@ -114,6 +114,7 @@ public class StardewCraft implements ModInitializer {
 							entries.add(CopperTools.COPPER_HOE);
 							entries.add(CopperTools.COPPER_PICKAXE);
 							entries.add(CopperTools.COPPER_SHOVEL);
+							entries.add(SCARECROW);
 						}))
 				.build()); // build() no longer registers by itself
 
