@@ -4,6 +4,7 @@ import com.stardewcraft.blocks.ScarecrowBlock;
 import com.stardewcraft.effects.MaxHeartUp;
 
 
+import com.stardewcraft.items.crops.Potato_Crop;
 import com.stardewcraft.items.tools.CopperTools;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -11,6 +12,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.CropBlock;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -67,6 +69,14 @@ public class StardewCraft implements ModInitializer {
 									.hunger(2)
 									.saturationModifier(0.1f)
 									.build())));
+	public static final Item POTATO =
+			Registry.register(Registries.ITEM, new Identifier(MOD_ID, "potato"),
+					new Item(new FabricItemSettings()
+							.maxCount(64)
+							.food(new FoodComponent.Builder()
+									.hunger(2)
+									.saturationModifier(0.1f)
+									.build())));
 
 	public static final RegistryKey<ItemGroup> STARDEWCRAFT =
 			RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(MOD_ID, "stardewcraft"));
@@ -78,6 +88,10 @@ public class StardewCraft implements ModInitializer {
 			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 	public static final Item BLUE_JAZZ_SEEDS =
 			new AliasedBlockItem(BLUE_JAZZ_CROP, new Item.Settings());
+	public static final CropBlock POTATO_CROP =
+			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+	public static final Item POTATO_SEEDS =
+			new AliasedBlockItem(POTATO_CROP, new Item.Settings());
 
 
 	//Register zone of tools
@@ -110,6 +124,8 @@ public class StardewCraft implements ModInitializer {
 							entries.add(PARSNIP_SEEDS);
 							entries.add(BLUE_JAZZ);
 							entries.add(BLUE_JAZZ_SEEDS);
+							entries.add(POTATO);
+							entries.add(POTATO_SEEDS);
 							entries.add(CopperTools.COPPER_AXE);
 							entries.add(CopperTools.COPPER_HOE);
 							entries.add(CopperTools.COPPER_PICKAXE);
@@ -128,6 +144,8 @@ public class StardewCraft implements ModInitializer {
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID,"parsnip_seeds"), PARSNIP_SEEDS);
 		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "blue_jazz_crop"), BLUE_JAZZ_CROP);
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "blue_jazz_seeds"), BLUE_JAZZ_SEEDS);
+		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "potato_crop"), POTATO_CROP);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "potato_seeds"), POTATO_SEEDS);
 
 
 		//Register zone of blocks

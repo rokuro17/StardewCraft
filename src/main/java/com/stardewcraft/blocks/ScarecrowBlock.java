@@ -30,15 +30,16 @@ public class ScarecrowBlock extends Block {
     private static final VoxelShape COMPLEX_SHAPE = VoxelShapes.union(STICK, BODY, ARM1, ARM2, HEAD, HAT_PLANE, HAT_COPE);
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    public ActionResult onUse(BlockState state ,World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
             player.sendMessage(Text.translatable("no_crows_message"), false);
         }
 
         return ActionResult.SUCCESS;
     }
+
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
+    public VoxelShape getOutlineShape(BlockState state ,BlockView view, BlockPos pos, ShapeContext context) {
         return COMPLEX_SHAPE;
     }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "stardewcraft:block/potato_crop_stage1"
+  }
+}

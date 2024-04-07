@@ -19,6 +19,7 @@ public class MainClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), StardewCraft.PARSNIP_CROP);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), StardewCraft.BLUE_JAZZ_CROP);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), StardewCraft.POTATO_CROP);
 
     }
 }
