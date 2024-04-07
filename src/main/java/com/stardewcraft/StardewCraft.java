@@ -145,7 +145,7 @@ public class StardewCraft implements ModInitializer {
 		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "blue_jazz_crop"), BLUE_JAZZ_CROP);
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "blue_jazz_seeds"), BLUE_JAZZ_SEEDS);
 		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "potato_crop"), POTATO_CROP);
-		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "potato_seeds"), POTATO_SEEDS);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "potato_seeds.json"), POTATO_SEEDS);
 
 
 		//Register zone of blocks
