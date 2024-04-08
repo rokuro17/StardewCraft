@@ -4,6 +4,7 @@ import com.stardewcraft.blocks.ScarecrowBlock;
 import com.stardewcraft.effects.MaxHeartUp;
 
 
+import com.stardewcraft.items.crops.Carrot_Crop;
 import com.stardewcraft.items.crops.Potato_Crop;
 import com.stardewcraft.items.tools.CopperTools;
 import net.fabricmc.api.ModInitializer;
@@ -77,6 +78,22 @@ public class StardewCraft implements ModInitializer {
 									.hunger(2)
 									.saturationModifier(0.1f)
 									.build())));
+	public static final Item CARROT =
+			Registry.register(Registries.ITEM, new Identifier(MOD_ID, "carrot"),
+					new Item(new FabricItemSettings()
+							.maxCount(64)
+							.food(new FoodComponent.Builder()
+									.hunger(2)
+									.saturationModifier(0.1f)
+									.build())));
+	public static final Item CAULIFLOWER =
+			Registry.register(Registries.ITEM, new Identifier(MOD_ID, "cauliflower"),
+					new Item(new FabricItemSettings()
+							.maxCount(64)
+							.food(new FoodComponent.Builder()
+									.hunger(2)
+									.saturationModifier(0.1f)
+									.build())));
 
 	public static final RegistryKey<ItemGroup> STARDEWCRAFT =
 			RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(MOD_ID, "stardewcraft"));
@@ -92,6 +109,14 @@ public class StardewCraft implements ModInitializer {
 			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 	public static final Item POTATO_SEEDS =
 			new AliasedBlockItem(POTATO_CROP, new Item.Settings());
+	public static final CropBlock CARROT_CROP =
+			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+	public static final Item CARROT_SEEDS =
+			new AliasedBlockItem(CARROT_CROP, new Item.Settings());
+	public static final CropBlock CAULIFLOWER_CROP =
+			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+	public static final Item CAULIFLOWER_SEEDS =
+			new AliasedBlockItem(CAULIFLOWER_CROP, new Item.Settings());
 
 
 	//Register zone of tools
@@ -126,6 +151,10 @@ public class StardewCraft implements ModInitializer {
 							entries.add(BLUE_JAZZ_SEEDS);
 							entries.add(POTATO);
 							entries.add(POTATO_SEEDS);
+							entries.add(CARROT);
+							entries.add(CARROT_SEEDS);
+							entries.add(CAULIFLOWER);
+							entries.add(CAULIFLOWER_SEEDS);
 							entries.add(CopperTools.COPPER_AXE);
 							entries.add(CopperTools.COPPER_HOE);
 							entries.add(CopperTools.COPPER_PICKAXE);
@@ -145,7 +174,11 @@ public class StardewCraft implements ModInitializer {
 		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "blue_jazz_crop"), BLUE_JAZZ_CROP);
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "blue_jazz_seeds"), BLUE_JAZZ_SEEDS);
 		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "potato_crop"), POTATO_CROP);
-		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "potato_seeds.json"), POTATO_SEEDS);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "potato_seeds"), POTATO_SEEDS);
+		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "carrot_crop"), CARROT_CROP);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "carrot_seeds"), CARROT_SEEDS);
+		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "cauliflower_crop"), CAULIFLOWER_CROP);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "cauliflower_seeds"), CAULIFLOWER_SEEDS);
 
 
 		//Register zone of blocks

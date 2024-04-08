@@ -1,0 +1,6 @@
+{
+  "parent": "stardewcraft:block/crop_cross",
+  "textures": {
+    "cross": "stardewcraft:block/cauliflower_crop_stage1"
+  }
+}
