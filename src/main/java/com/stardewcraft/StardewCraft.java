@@ -1,5 +1,6 @@
 package com.stardewcraft;
 
+import com.stardewcraft.blockentities.SeedMakerEntity;
 import com.stardewcraft.blocks.ScarecrowBlock;
 import com.stardewcraft.effects.MaxHeartUp;
 
@@ -11,10 +12,12 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CropBlock;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.*;
@@ -129,6 +132,15 @@ public class StardewCraft implements ModInitializer {
 
 
 	public static final Block SCARECROW  = new ScarecrowBlock(FabricBlockSettings.create().strength(4.0f).requiresTool());
+
+	public static final Block SEED_MAKER_BLOCK  = new Block(FabricBlockSettings.create().strength(4.0f));
+
+
+	public static final BlockEntityType<SeedMakerEntity> SEED_MAKER_ENTITY = Registry.register(
+			Registries.BLOCK_ENTITY_TYPE,
+			new Identifier(MOD_ID, "seed_maker_entity"),
+			FabricBlockEntityTypeBuilder.create(SeedMakerEntity::new, SEED_MAKER_BLOCK).build()
+	);
 	/**
 	 * Method that regulates the behavior of the mod on initialization
 	 */
@@ -184,5 +196,7 @@ public class StardewCraft implements ModInitializer {
 		//Register zone of blocks
 		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "scarecrow_block"), SCARECROW);
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "scarecrow_block"), new BlockItem(SCARECROW, new FabricItemSettings()));
+		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "seed_maker_block"), SEED_MAKER_BLOCK);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "seed_maker_block"), new BlockItem(SEED_MAKER_BLOCK, new FabricItemSettings()));
 	}
 }
