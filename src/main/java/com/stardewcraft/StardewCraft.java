@@ -5,8 +5,7 @@ import com.stardewcraft.blocks.ScarecrowBlock;
 import com.stardewcraft.effects.MaxHeartUp;
 
 
-import com.stardewcraft.items.crops.Carrot_Crop;
-import com.stardewcraft.items.crops.Potato_Crop;
+import com.stardewcraft.items.crops.*;
 import com.stardewcraft.items.tools.CopperTools;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -101,23 +100,23 @@ public class StardewCraft implements ModInitializer {
 	public static final RegistryKey<ItemGroup> STARDEWCRAFT =
 			RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(MOD_ID, "stardewcraft"));
 	public static final CropBlock PARSNIP_CROP =
-			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+			new Parsnip_Crop(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 	public static final Item PARSNIP_SEEDS =
 			new AliasedBlockItem(PARSNIP_CROP, new Item.Settings());
 	public static final CropBlock BLUE_JAZZ_CROP =
-			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+			new Blue_Jazz_Crop(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 	public static final Item BLUE_JAZZ_SEEDS =
 			new AliasedBlockItem(BLUE_JAZZ_CROP, new Item.Settings());
 	public static final CropBlock POTATO_CROP =
-			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+			new Potato_Crop(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 	public static final Item POTATO_SEEDS =
 			new AliasedBlockItem(POTATO_CROP, new Item.Settings());
 	public static final CropBlock CARROT_CROP =
-			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+			new Carrot_Crop(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 	public static final Item CARROT_SEEDS =
 			new AliasedBlockItem(CARROT_CROP, new Item.Settings());
 	public static final CropBlock CAULIFLOWER_CROP =
-			new CropBlock(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+			new Cauliflower_Crop(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 	public static final Item CAULIFLOWER_SEEDS =
 			new AliasedBlockItem(CAULIFLOWER_CROP, new Item.Settings());
 
