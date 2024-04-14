@@ -14,6 +14,9 @@
   "item.stardewcraft.copper_axe": "Copper Axe",
   "item.stardewcraft.copper_hoe": "Copper Hoe",
   "item.stardewcraft.copper_shovel": "Copper Shovel",
+  "item.stardewcraft.scarecrow_block": "Scarecrow",
+  "item.stardewcraft.seed_maker_block": "Seed Maker",
   "block.stardewcraft.scarecrow_block": "Scarecrow",
+  "block.stardewcraft.seed_maker_block": "Seed Maker",
   "no_crows_message": "I haven't seen any crows"
 }

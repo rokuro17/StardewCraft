@@ -14,6 +14,9 @@
   "item.stardewcraft.copper_axe": "Hacha de cobre",
   "item.stardewcraft.copper_hoe": "Azada de cobre",
   "item.stardewcraft.copper_shovel": "Pala de cobre",
+  "item.stardewcraft.scarecrow_block": "Epantapájaros",
+  "item.stardewcraft.seed_maker_block": "Semilladora",
   "block.stardewcraft.scarecrow_block": "Espantapájaros",
+  "block.stardewcraft.seed_maker_block": "Semilladora",
   "no_crows_message": "No he visto ningún cuervo"
 }
