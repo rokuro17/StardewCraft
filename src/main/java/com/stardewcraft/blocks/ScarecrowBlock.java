@@ -1,23 +1,59 @@
 package com.stardewcraft.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.stardewcraft.StardewCraft;
+import com.stardewcraft.blockentities.ScarecrowBlockEntity;
+import com.stardewcraft.blockentities.SeedMakerEntity;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class ScarecrowBlock extends Block {
+public class ScarecrowBlock extends BlockWithEntity {
 
-    public ScarecrowBlock(Settings settings) {
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
+
+    @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        return null;
+    }
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new ScarecrowBlockEntity(pos, state);
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return type == StardewCraft.SCARECROW_ENTITY ? (BlockEntityTicker<T>) (world1, pos, state1, be) -> ScarecrowBlockEntity.tick(world1, pos, state1, (ScarecrowBlockEntity) be) : null;
+    }
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        // Set the FACING property to the direction the player is facing
+        return this.getDefaultState().with(FACING, ctx.getPlayer().getHorizontalFacing().getOpposite());
+    }
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
+    }
+
+    public ScarecrowBlock(Settings settings){
         super(settings);
+        setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH));
     }
 
     private static final VoxelShape STICK = VoxelShapes.cuboid(0.4375f, 0f, 0.4375f, 0.5625f, 0.5f, 0.5625f);
@@ -41,5 +77,11 @@ public class ScarecrowBlock extends Block {
     @Override
     public VoxelShape getOutlineShape(BlockState state ,BlockView view, BlockPos pos, ShapeContext context) {
         return COMPLEX_SHAPE;
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        // With inheriting from BlockWithEntity this defaults to INVISIBLE, so we need to change that!
+        return BlockRenderType.MODEL;
     }
 }

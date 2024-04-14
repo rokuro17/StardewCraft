@@ -1,5 +1,6 @@
 package com.stardewcraft;
 
+import com.stardewcraft.blockentities.ScarecrowBlockEntity;
 import com.stardewcraft.blockentities.SeedMakerEntity;
 import com.stardewcraft.blocks.ScarecrowBlock;
 import com.stardewcraft.blocks.SeedMakerBlock;
@@ -130,7 +131,7 @@ public class StardewCraft implements ModInitializer {
 	}
 
 
-	public static final Block SCARECROW  = new ScarecrowBlock(FabricBlockSettings.create().strength(4.0f).requiresTool());
+	public static final Block SCARECROW_BLOCK  = new ScarecrowBlock(FabricBlockSettings.create().strength(4.0f).requiresTool());
 
 	public static final Block SEED_MAKER_BLOCK  = new SeedMakerBlock(FabricBlockSettings.create().strength(4.0f));
 
@@ -139,6 +140,12 @@ public class StardewCraft implements ModInitializer {
 			Registries.BLOCK_ENTITY_TYPE,
 			new Identifier(MOD_ID, "seed_maker_entity"),
 			FabricBlockEntityTypeBuilder.create(SeedMakerEntity::new, SEED_MAKER_BLOCK).build()
+	);
+
+	public static final BlockEntityType<ScarecrowBlockEntity> SCARECROW_ENTITY = Registry.register(
+			Registries.BLOCK_ENTITY_TYPE,
+			new Identifier(MOD_ID, "scarecrow_block_entity"),
+			FabricBlockEntityTypeBuilder.create(ScarecrowBlockEntity::new, SCARECROW_BLOCK).build()
 	);
 	/**
 	 * Method that regulates the behavior of the mod on initialization
@@ -170,7 +177,7 @@ public class StardewCraft implements ModInitializer {
 							entries.add(CopperTools.COPPER_HOE);
 							entries.add(CopperTools.COPPER_PICKAXE);
 							entries.add(CopperTools.COPPER_SHOVEL);
-							entries.add(SCARECROW);
+							entries.add(SCARECROW_BLOCK);
 							entries.add(SEED_MAKER_BLOCK);
 						}))
 				.build()); // build() no longer registers by itself
@@ -194,8 +201,8 @@ public class StardewCraft implements ModInitializer {
 
 
 		//Register zone of blocks
-		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "scarecrow_block"), SCARECROW);
-		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "scarecrow_block"), new BlockItem(SCARECROW, new FabricItemSettings()));
+		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "scarecrow_block"), SCARECROW_BLOCK);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "scarecrow_block"), new BlockItem(SCARECROW_BLOCK, new FabricItemSettings()));
 		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "seed_maker_block"), SEED_MAKER_BLOCK);
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "seed_maker_block"), new BlockItem(SEED_MAKER_BLOCK, new FabricItemSettings()));
 	}
