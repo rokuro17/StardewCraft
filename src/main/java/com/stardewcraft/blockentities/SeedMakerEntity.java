@@ -1,45 +1,72 @@
 package com.stardewcraft.blockentities;
 
 import com.stardewcraft.StardewCraft;
-import com.stardewcraft.blocks.SeedMakerBlock;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class SeedMakerEntity extends BlockEntity {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-    private int number = 7;
+public class SeedMakerEntity extends BlockEntity {
+    private boolean hasParsnip = false;
+
     public SeedMakerEntity(BlockPos pos, BlockState state) {
         super(StardewCraft.SEED_MAKER_ENTITY, pos, state);
     }
 
-    // Serialize the BlockEntity
+    public void setHasParsnip(boolean hasParsnip) {
+        this.hasParsnip = hasParsnip;
+    }
+
+    public boolean getHasParsnip() {
+        return this.hasParsnip;
+    }
+
     @Override
     public void writeNbt(NbtCompound nbt) {
-        // Save the current value of the number to the nbt
-        nbt.putInt("number", number);
-
         super.writeNbt(nbt);
+        nbt.putBoolean("hasParsnip", hasParsnip);
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        hasParsnip = nbt.getBoolean("hasParsnip");
+    }
+    private final List<ItemStack> inventory = new ArrayList<>(Collections.nCopies(1, ItemStack.EMPTY));
+    private int timer = 0;
+    public void startTimer() {
+        timer = 1200; // 1200 ticks = 1 minute in real time
+    }
+
+    public boolean isTimerFinished() {
+        return timer <= 0;
+    }
+
+    public void resetTimer() {
+        timer = 0;
+    }
+    public static void tick(World world, BlockPos pos, BlockState state, SeedMakerEntity blockEntity) {
+        if (blockEntity.timer > 0) {
+            blockEntity.timer--;
+        }
+    }
+    public List<ItemStack> getItems() {
+        return inventory;
     }
 
     @Nullable
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
         return BlockEntityUpdateS2CPacket.create(this);
-    }
-
-    @Override
-    public NbtCompound toInitialChunkDataNbt() {
-        return createNbt();
     }
 }

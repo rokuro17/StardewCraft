@@ -2,6 +2,7 @@ package com.stardewcraft;
 
 import com.stardewcraft.blockentities.SeedMakerEntity;
 import com.stardewcraft.blocks.ScarecrowBlock;
+import com.stardewcraft.blocks.SeedMakerBlock;
 import com.stardewcraft.effects.MaxHeartUp;
 
 
@@ -14,7 +15,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.CropBlock;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.effect.StatusEffect;
@@ -132,7 +132,7 @@ public class StardewCraft implements ModInitializer {
 
 	public static final Block SCARECROW  = new ScarecrowBlock(FabricBlockSettings.create().strength(4.0f).requiresTool());
 
-	public static final Block SEED_MAKER_BLOCK  = new Block(FabricBlockSettings.create().strength(4.0f));
+	public static final Block SEED_MAKER_BLOCK  = new SeedMakerBlock(FabricBlockSettings.create().strength(4.0f));
 
 
 	public static final BlockEntityType<SeedMakerEntity> SEED_MAKER_ENTITY = Registry.register(
@@ -171,6 +171,7 @@ public class StardewCraft implements ModInitializer {
 							entries.add(CopperTools.COPPER_PICKAXE);
 							entries.add(CopperTools.COPPER_SHOVEL);
 							entries.add(SCARECROW);
+							entries.add(SEED_MAKER_BLOCK);
 						}))
 				.build()); // build() no longer registers by itself
 
